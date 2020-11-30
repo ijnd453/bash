@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-arg=$1
-if [[ -z "$arg" ]]; then
+if [[ $# -eq 0 ]]; then
 	echo "One for you, one for me."
 else
-	echo "One for $arg, one for me."
+	echo "One for $1, one for me."
 fi
