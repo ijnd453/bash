@@ -2,6 +2,7 @@
 arg1=$1
 arg2=$2
 num=''
+flag=true
 temp=''
 for color in $arg1 $arg2
 do
@@ -48,8 +49,12 @@ do
 			;;
 
 		*)
-			num='invalid color'
+			flag=false
 			;;
 		esac
-	echo "$temp"
+	num="$num$temp"
 done
+if ! $flag; then
+	num="invalid color"
+fi
+echo "$num"
