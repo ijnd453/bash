@@ -1,7 +1,8 @@
-echo "$@ $#"
-echo "$[$# + 1]"
-for((i=0; i <= $[$# - 1]; i++));
+for((i=1; i <= $[$# - 1]; i++));
 do
 	j=$(($i+1))
-	echo "${!i} ${!j}"
+	echo "For want of a ${!i} the ${!j} was lost."
 done
+if (( $# >= 1 )); then
+	echo "And all for the want of a $1."
+fi
