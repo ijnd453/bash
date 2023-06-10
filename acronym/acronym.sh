@@ -12,4 +12,4 @@ do
 	temp_i="${temp_i:0:1}"
 	result_acronym+="${temp_i^^}"
 done
-echo $result_acronym | tr -dc '[:alnum:]\n\r'
+echo $result_acronym | tr -dc "[:alnum:]\n\r"
