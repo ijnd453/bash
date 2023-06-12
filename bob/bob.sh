@@ -1,24 +1,22 @@
 #!/usr/bin/env bash
+set -o noglob
+q=0
+unspaced_input=$(tr -d [:space:] <<< "$1")
+if [[ -z "$unspaced_input" ]]; then
+	echo "Fine. Be that way!"
+else
+	#echo "${unspaced_input:(-1)}"
+	if [[ "${unspaced_input:(-1)}" == "?" ]]; then
+		q=1
+	fi
+	only_alpha=$(tr -cd [:alpha:] <<< "$unspaced_input")
+	#echo "Q: $q"
+	#echo "Only_alpha: $only_alpha"
+	no_lower=$(tr -d [:lower:] <<< "$only_alpha")
+	if [[ -z "$no_lower" ]]; then
+		[[ $q -eq 0 ]] && echo "Whatever." || echo "Sure."
+	else
+		[[ $q -eq 0 ]] && echo "Whoa, chill out!" || echo "Calm down, I know what I'm doing!"
+	fi
 
-# The following comments should help you get started:
-# - Bash is flexible. You may use functions or write a "raw" script.
-#
-# - Complex code can be made easier to read by breaking it up
-#   into functions, however this is sometimes overkill in bash.
-#
-# - You can find links about good style and other resources
-#   for Bash in './README.md'. It came with this exercise.
-#
-#   Example:
-#   # other functions here
-#   # ...
-#   # ...
-#
-#   main () {
-#     # your main function code here
-#   }
-#
-#   # call main with all of the positional arguments
-#   main "$@"
-#
-# *** PLEASE REMOVE THESE COMMENTS BEFORE SUBMITTING YOUR SOLUTION ***
+fi
